@@ -102,6 +102,112 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+    let cLog  = errorBtns[0];
+    cLog.addEventListener('click', () => {
+      console.log("test");
+    });
+
+    let cErr  = errorBtns[1];
+    cErr.addEventListener('click', () => {
+      console.error('Testing error no worry');
+    });
+
+    let cCount  = errorBtns[2];
+    cCount.addEventListener('click', () => {
+      console.count();
+    });
+
+    let cWarn  = errorBtns[3];
+    cWarn.addEventListener('click', () => {
+      console.warn('Testing warning');
+    });
+
+    let cAssert = errorBtns[4];
+    cAssert.addEventListener('click', () => {
+      console.assert(false, 'false assertion');
+    });
+
+    let cClear  = errorBtns[5];
+    cClear.addEventListener('click', () => {
+      console.clear();
+    });
+
+    let cDir = errorBtns[6];
+    cDir.addEventListener('click', () => {
+      console.dir(form);
+    });
+
+    let cDirXml  = errorBtns[7];
+    cDirXml.addEventListener('click', () => {
+      console.dirxml(form);
+    });
+
+    let label = 'my lable';
+    let cGstart = errorBtns[8];
+    cGstart.addEventListener('click', () => {
+      console.group(label);
+    });
+
+    let cGend = errorBtns[9];
+    cGend.addEventListener('click', () => {
+      console.groupEnd(label);
+    });
+
+    //Table
+    let Thanksgiving = [
+      {
+        jada: 'Chicken',
+        brenda: 'Burritos',
+        jorge: 'Taco',
+        toe: 'Ramen'
+      },
+      {
+        tom: 'Fish',
+        jerry: 'Cheese',
+        dante: 'Beef',
+        pillow: 'Gloves'
+      }
+    ]; 
+
+    let cTable = errorBtns[10];
+    cTable.addEventListener('click', () => {
+      console.table(Thanksgiving);;
+    });
+
+    let cTimer = errorBtns[11];
+    cTimer.addEventListener('click', () => {
+      console.time();
+    });
+
+    let cTimerEnd = errorBtns[12];
+    cTimerEnd.addEventListener('click', () => {
+      console.timeEnd();
+    });
+
+    //trace 
+    function trace1(){
+      console.trace();
+    }
+
+    function trace2(){
+      trace1();
+    }
+
+    let cTrace = errorBtns[13];
+    cTrace.addEventListener('click', () => {
+      trace2()
+    });
+
+    let cGlobalErr = errorBtns[14];
+    cGlobalErr.addEventListener('click', () => {
+      console.log('this is bad');
+      notdefine();
+    });
+
+    window.addEventListener('error', () => {
+      console.error('no error here');
+    });
+
   </script>
 </body>
 
