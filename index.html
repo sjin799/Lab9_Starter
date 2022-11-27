@@ -87,7 +87,22 @@
     </section>
   </main>
 
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "5a06076efc734eeb88796a2d91bbe8a7"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
+                          
+  <script>
+    class FindError extends Error {
+      constructor(mes){
+        super(mes);
+        this.name = "error founded";
+      }
+    }
+ //  TrackJS.track('Testing TrackJS!');
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -95,6 +110,18 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
+
+      try {
+        if(isNaN(firstNum) && isNaN(secondNum)){
+          throw new FindError("Both inputs are wrong.");
+        }
+        else if (isNaN(firstNum) || isNaN(secondNum)){
+          throw new FindError("One of inputs is wrong.");
+        }
+
+      } catch (error) {
+        console.error(`${error.name}:${error.message}`);
+      }
       output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
     });
 
@@ -120,6 +147,7 @@
     let cWarn  = errorBtns[3];
     cWarn.addEventListener('click', () => {
       console.warn('Testing warning');
+      TrackJS.track('Test TrackJS');
     });
 
     let cAssert = errorBtns[4];
@@ -201,6 +229,7 @@
     let cGlobalErr = errorBtns[14];
     cGlobalErr.addEventListener('click', () => {
       console.log('this is bad');
+      TrackJS.track('Function Not define');
       notdefine();
     });
 
